@@ -23,7 +23,7 @@ erDiagram
 
     weight_logs {
         bigint id PK
-        bigint user_id 
+        bigint user_id FK
         date date
         decimal weight
         int calories
