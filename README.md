@@ -1,5 +1,5 @@
 # アプリケーション名
-coachtech pigly
+pigly
 
 # 環境構築
 Dockerビルド
