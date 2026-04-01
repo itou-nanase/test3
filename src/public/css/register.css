@@ -1,0 +1,47 @@
+/* 新規会員登録　*/
+.form-title{
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* STEP1　アカウント情報の登録 */
+.step{
+    text-align: center;
+}
+
+/* ラベルと入力フォームを縦並び */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    display: block;
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+/* 次に進むボタン */
+.btn-primary{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background: linear-gradient(to top left, #c084fc,
+        #e9d5ff);
+    padding: 12px 0;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+
+/* ログインはこちらボタン　*/
+.to-login{
+    text-align: center;
+}
+
+/*　エラーメッセージ　*/
+.form-error{
+    color: red;
+    font-size: 15px;
+}

@@ -23,9 +23,10 @@ body {
 
 /* アプリ名 */
 .app-name {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: plum;
 }
 
 /* 各ページの中身 */

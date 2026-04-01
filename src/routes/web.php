@@ -1,7 +1,10 @@
 <?php
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\Register1Controller;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\Register2Controller;
+use App\Http\Controllers\WeightLogController;
+use App\Http\Controllers\TargetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /*　会員登録画面　*/
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/register/step1', [Register1Controller::class, 'showStep1'])->name('register.step1');
+Route::post('/register/step1', [Register1Controller::class, 'postStep1'])->name('register.step1');
 
 /* ログイン画面　*/
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+/* 初期体重登録画面 */
+Route::get('/register/step2', [Register2Controller::class, 'show'])
+    ->name('register.step2');
+
+Route::post('/register/step2', [Register2Controller::class, 'store'])->name('register.step2.store');
+
+/*　体重管理画面　*/
+Route::get('/weight_logs', [WeightLogController::class, 'index'])
+    ->name('weight_logs.index');
+Route::post('/weight_logs', [WeightLogController::class, 'store']);
+
+/* 目標体重設定 */
+Route::get('/weight_logs/goal_setting',[TargetController::class, 'edit']);
+Route::post('/weight_logs/goal_setting',[TargetController::class, 'update']);
+
+/* データ追加 */
+Route::get('/weights/create', [WeightLogController::class, 'create']);
+
+/* えんぴつボタン */
+Route::get('/weight_logs/{weightLogId}/update', [WeightLogController::class, 'edit']);
