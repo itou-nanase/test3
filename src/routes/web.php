@@ -24,7 +24,7 @@ Route::post('/register/step1', [Register1Controller::class, 'postStep1'])->name(
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->middleware('guest');
 
 /* 初期体重登録画面 */
 Route::get('/register/step2', [Register2Controller::class, 'show'])
@@ -46,3 +46,4 @@ Route::get('/weights/create', [WeightLogController::class, 'create']);
 
 /* えんぴつボタン */
 Route::get('/weight_logs/{weightLogId}/update', [WeightLogController::class, 'edit']);
+Route::post('/weight_logs/{weightLogId}/update', [WeightLogController::class, 'update']);

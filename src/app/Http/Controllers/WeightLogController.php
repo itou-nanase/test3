@@ -61,4 +61,27 @@ class WeightLogController extends Controller
 
         return view('weight_logs.edit', compact('log'));
     }
+
+    public function update(Request $request, $weightLogId)
+{
+    $request->validate([
+        'date' => 'required|date',
+        'weight' => 'required|numeric',
+        'calories' => 'nullable|numeric',
+        'exercise_time' => 'nullable|numeric',
+        'exercise_content' => 'nullable|string',
+    ]);
+
+    $log = WeightLog::findOrFail($weightLogId);
+
+    $log->date = $request->date;
+    $log->weight = $request->weight;
+    $log->calories = $request->calories;
+    $log->exercise_time = $request->exercise_time;
+    $log->exercise_content = $request->exercise_content;
+
+    $log->save();
+
+    return redirect('/')->with('success', '更新しました');
+}
 }
